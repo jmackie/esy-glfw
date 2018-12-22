@@ -6,6 +6,7 @@
   "esy": {
     "build": [
         ["make", "#{os == 'windows' ? 'noop' : 'build-glfw'}", "ROOTDIR=#{self.root}"],
+        ["cp", "-r", "$cur__root/_prebuilt/.", "$cur__install/include/"],
         ["make", "install", "ROOTDIR=#{self.root}", "LIBDIR=#{self.lib}"]
     ],
     "buildsInSource":"_build",
