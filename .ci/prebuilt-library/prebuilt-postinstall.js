@@ -45,10 +45,8 @@ function copyRecursive(srcDir, dstDir) {
   return results;
 }
 
-const platform = process.platform;
-
 console.log("Copying prebuilt binaries for: " + process.platform);
 const prebuiltDir = path.join(__dirname, "_prebuilt");
 fs.mkdirSync(prebuiltDir);
-copyRecursive(path.join(__dirname, "platform"), prebuiltDir);
+copyRecursive(path.join(__dirname, "platform-" + platform), prebuiltDir);
 console.log("Prebuilt binaries copied successfully to: " + prebuiltDir);
