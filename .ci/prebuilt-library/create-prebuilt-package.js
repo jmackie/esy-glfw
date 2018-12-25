@@ -19,18 +19,15 @@ const packageJson = JSON.stringify(
         license: mainPackageJson.license,
         description: mainPackageJson.description,
         repository: mainPackageJson.repository,
-        scripts: {
-            postinstall: "node ./postinstall.js",
-        },
         esy: {
             build: [
-                "cp -r $cur__root/_prebuilt/. $cur__install/",
-                "echo Installed $cur__name to $cur__install"
+                "./copy-prebuilts.sh",
+                "echo Copy complete."
             ],
             exportedEnv: exportedEnv,
         },
         files: [
-            "postinstall.js",
+            "copy-prebuilts.sh",
             "platform-linux/",
             "platform-darwin/",
             "platform-win32/"
@@ -54,8 +51,9 @@ fs.copyFileSync(
   path.join(rootDir, "_release", "README.md")
 );
 
-console.log("Copying postinstall.js");
+console.log("Copying copy-prebuilts.sh");
 fs.copyFileSync(
-  path.join(__dirname, "prebuilt-postinstall.js"),
-  path.join(rootDir, "_release", "postinstall.js")
+  path.join(__dirname, "copy-prebuilts.sh"),
+  path.join(rootDir, "_release", "copy-prebuilts.sh")
 );
+fs.chmodSync(path.join(rootDir, "_release", "copy-prebuilts.sh"), 0o755);
