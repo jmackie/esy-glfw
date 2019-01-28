@@ -1,6 +1,6 @@
 BUILDDIR=$(ROOTDIR)/_build
 
-ifeq (, $(shell which x86_64-w64-mingw32-g++))
+ifeq ($(WIN32), 1)
 INCLUDE=$(BUILDDIR)/glfw/include
 LIBRARY=$(BUILDDIR)/glfw/src
 else
