@@ -1,12 +1,12 @@
 BUILDDIR=$(ROOTDIR)/_build
 
-ifeq ($(WIN32), 1)
-INCLUDE=$(BUILDDIR)/glfw/include
-LIBRARY=$(BUILDDIR)/glfw/src
-else
+ifeq ($(WIN32),"1")
 INCLUDE=$(ROOTDIR)/include
 LIBRARY=$(ROOTDIR)/lib-mingw-w64
 ADDITIONAL_OPTS=-cclib -lgdi32
+else
+INCLUDE=$(BUILDDIR)/glfw/include
+LIBRARY=$(BUILDDIR)/glfw/src
 endif
 
 # Building glfw from source
@@ -26,6 +26,7 @@ build-glfw: $(LIBRARY)/libglfw3.a
 	mkdir -p $(BUILDDIR)
 
 install:
+	echo Win32: $(WIN32)
 	@echo Installing from $(LIBRARY) to $(LIBDIR)
 	@mkdir -p $(LIBDIR)
 	@cp $(LIBRARY)/*.a $(LIBDIR)
