@@ -1,12 +1,12 @@
 BUILDDIR=$(ROOTDIR)/_build
 
-ifeq (, $(shell which x86_64-w64-mingw32-g++))
-INCLUDE=$(BUILDDIR)/glfw/include
-LIBRARY=$(BUILDDIR)/glfw/src
-else
+ifeq ($(WIN32),1)
 INCLUDE=$(ROOTDIR)/include
 LIBRARY=$(ROOTDIR)/lib-mingw-w64
 ADDITIONAL_OPTS=-cclib -lgdi32
+else
+INCLUDE=$(BUILDDIR)/glfw/include
+LIBRARY=$(BUILDDIR)/glfw/src
 endif
 
 # Building glfw from source
