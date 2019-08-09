@@ -1,0 +1,26 @@
+{
+  "name": "revery-glfw",
+  "version": "3.4.1000",
+  "description": "Revery GLFW build",
+  "license": "MIT",
+  "esy": {
+    "build": [
+        ["bash", "-c", "#{os == 'windows' ? './build/configure-windows.sh' : './build/configure.sh'}"],
+        ["make", "install"]
+    ],
+    "buildsInSource":"_build",
+    "exportedEnv": {
+        "GLFW_INCLUDE_PATH": {
+            "val": "#{self.install / 'include'}",
+            "scope": "global"
+        },
+        "GLFW_LIB_PATH": {
+            "val": "#{self.lib}",
+            "scope": "global"
+        }
+    }
+  },
+  "dependencies": {
+    "esy-cmake": "^0.3.2"
+  }
+}
