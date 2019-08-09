@@ -8,7 +8,7 @@
         ["bash", "-c", "#{os == 'windows' ? './build/configure-windows.sh' : './build/configure.sh'}"],
         ["make", "install"]
     ],
-    "buildsInSource":"_build",
+    "buildsInSource":true,
     "exportedEnv": {
         "GLFW_INCLUDE_PATH": {
             "val": "#{self.install / 'include'}",
