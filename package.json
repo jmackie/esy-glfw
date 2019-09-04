@@ -5,8 +5,7 @@
   "license": "MIT",
   "esy": {
     "build": [
-        ["make", "#{os == 'windows' ? 'noop' : 'build-glfw'}", "ROOTDIR=#{self.root}", "WIN32=#{os == 'windows' ? '1' : '0'}"],
-        ["make", "install", "ROOTDIR=#{self.root}", "LIBDIR=#{self.lib}", "INCLUDEDIR=#{self.install / 'include'}", "WIN32=#{os == 'windows' ? '1': '0'}"]
+        ["./build_nix.sh", "#{self.target_dir / 'result'}", "#{self.install}"]
     ],
     "buildsInSource":"_build",
     "exportedEnv": {
@@ -25,6 +24,5 @@
     }
   },
   "dependencies": {
-    "esy-cmake": "^0.3.2"
   }
 }
