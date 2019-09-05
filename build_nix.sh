@@ -7,9 +7,10 @@ INSTALL_DIR=$2
 NIX_EXPR=$(
 	cat <<'DERIVATION'
 let
+  nixpkgsRev = "0213ccf6243a63c34b72e6a2ef4d9140a4d86540";
   nixpkgs = builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/release-19.03.tar.gz"; 
-    sha256 = "1id874rh5gsgnl5hdhmhidbrb0cl9qidk00r3jkhki3rpk4jfd75";
+    url = "https://github.com/NixOS/nixpkgs/archive/${nixpkgsRev}.tar.gz";
+    sha256 = "0vl73i4qxg3whdnwzyfkamcbp585imxxaca55lg72br252bkhjcq";
   };
   pkgs = import nixpkgs {};
 in
